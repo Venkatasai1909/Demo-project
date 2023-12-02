@@ -1,14 +1,18 @@
 package com.card91.wallet.service;
 
-import com.card91.wallet.dto.DataWalletDto;
-import com.card91.wallet.dto.RequestDto;
-import com.card91.wallet.model.Data;
+import com.card91.wallet.dto.DataWalletDTO;
+import com.card91.wallet.dto.FileUploadResponse;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
 
 public interface DataService {
-    void uploadFile(Data data);
 
-    DataWalletDto getDataFromFileNumber(RequestDto requestDto, Integer fileNumber);
+    DataWalletDTO getDataByDataId(Integer dataId);
 
-    DataWalletDto getDataByDataId(Integer dataId);
+    FileUploadResponse processFileUpload(MultipartFile file) throws IOException;
+
+    List<DataWalletDTO> fetchDataFromFile(MultipartFile file, Integer fileNumber) throws IOException;
 
 }

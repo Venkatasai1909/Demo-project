@@ -14,7 +14,8 @@ import java.util.List;
 @Builder
 public class FileData {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "file_number_seq")
+    @SequenceGenerator(name = "file_number_seq", sequenceName = "file_number_seq", allocationSize = 1, initialValue = 1)
     @Column(name = "file_number", nullable = false)
     private Integer fileNumber;
 
